@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
-RUN mkdir -p ~/dist
-WORKDIR ~/dist
+RUN mkdir -p /dist
+WORKDIR /dist
 RUN dpkg --add-architecture i386
 RUN apt update
 RUN apt-get install -y gnupg2 gnupg1 cabextract wget software-properties-common
@@ -34,5 +34,7 @@ ENV HOME /home/developer
 # "sleep 5" fixes various problems, including %ProgramFiles% not staying and failing to create window in "&& xvfb-run ..."
 RUN winecfg && wine cmd.exe /c echo '%ProgramFiles%' && sleep 5
 
-CMD if [ ! -f ~/.wine/drive_c/Program\ Files/YI\ 360\ Studio/YI\ 360\ Studio.exe ]; then ./winetricks -q vcrun2015; wine64 YI360Installer1.0.3.0.exe; fi; wine64 ~/.wine/drive_c/Program\ Files/YI\ 360\ Studio/YI\ 360\ Studio.exe
+WORKDIR /yi
+
+CMD if [ ! -f ~/.wine/drive_c/Program\ Files/YI\ 360\ Studio/YI\ 360\ Studio.exe ]; then /dist/winetricks -q vcrun2015; wine64 /dist/YI360Installer1.0.3.0.exe; fi; wine64 ~/.wine/drive_c/Program\ Files/YI\ 360\ Studio/YI\ 360\ Studio.exe
 

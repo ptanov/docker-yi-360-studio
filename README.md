@@ -20,7 +20,6 @@ Release notes：
 
 # Use
  - for the first time - you must follow the installation wizard and select the default location (C:\Program Files\YI 360 Studio) and **UNCHECK** *"Run YI 360 Studio 1.0.3.0"* checkbox in the last screen. Then press Finish and *YI 360 Studio* will start:
- - `docker run -it -e DISPLAY -v ~/.Xauthority:/root/.Xauthority -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v /dev/dri/:/dev/dri/ --device=/dev/snd -v $(pwd):/yi --name=yi-360-studio ptanov/yi-360-studio`
  - `docker run -it -e DISPLAY -v ~/.Xauthority:/root/.Xauthority -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v /dev/dri/:/dev/dri/ --device=/dev/snd -v $(pwd):$(pwd) -v $(pwd):/yi --name=yi-360-studio ptanov/yi-360-studio`
  - you can access your host's current directory from the container using `/yi` (because of `-v $(pwd):/yi` - you can change to whatever works for you)
  - if something fails or if you want to run *YI 360 Studio* again - type:
