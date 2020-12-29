@@ -5,9 +5,12 @@ WORKDIR /dist
 RUN dpkg --add-architecture i386
 RUN apt update
 RUN apt-get install -y gnupg2 gnupg1 cabextract wget software-properties-common
-RUN wget -nc https://dl.winehq.org/wine-builds/Release.key
-RUN apt-key add Release.key
+RUN wget -nc https://dl.winehq.org/wine-builds/winehq.key
+RUN apt-key add winehq.key
+#RUN wget -qO- https://dl.winehq.org/wine-builds/Release.key | apt-key add -
 RUN apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/
+# mentioned in https://tecadmin.net/install-wine-on-ubuntu/:
+RUN add-apt-repository -y ppa:cybermax-dexter/sdl2-backport
 RUN apt update
 RUN apt-get -y install --install-recommends winehq-devel
 RUN wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
