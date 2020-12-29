@@ -12,6 +12,8 @@ RUN apt update
 RUN apt-get -y install --install-recommends winehq-devel
 RUN wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
 RUN chmod +x winetricks
+# https://api.yitechnology.com/yi-360-vr-camera
+# https://api.yitechnology.com/yi-360-vr-camera-desktopsoftware
 RUN wget http://cdn.awssgp0.fds.api.mi-img.com/sportscamera/sportssns/resource/20180105023853/1/YI360Installer1.0.3.0.exe
 
 # Changes based on https://github.com/shangmu/docker.wine
